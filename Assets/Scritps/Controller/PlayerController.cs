@@ -1,29 +1,47 @@
-using Movements;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Abstracts.Inputs;
+using Inputs;
+using Movements;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace Controller
+namespace Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float _horiDir = 0f;
-        [SerializeField] private float _moveSpeed = 10f;
-        [SerializeField] float _jumpForce = 50f;
-        [SerializeField] bool _isJump;
+        [SerializeField] float _moveSpeed = 10f;
+        [SerializeField] float _jumpForce = 300f;
 
-        HoriMover _horiMover;
+        HoriMover _horizontalMover;
         Jump _jump;
+        IInputListener _input;
+        float _horizontal;
+        bool _isJump;
 
         private void Awake()
         {
-            _horiMover = new HoriMover(this);
+            _horizontalMover = new HoriMover(this);
             _jump = new Jump(this);
+            _input = new InputListener(GetComponent<PlayerInput>());
+        }
+
+        void Update()
+        {
+            _horizontal = _input.Horizontal;
+
+            if (_input.IsJump == true)
+            {
+                _isJump = true;
+
+            }   
         }
 
         private void FixedUpdate()
         {
-            _horiMover.FixedTick(_horiDir, _moveSpeed);
+            _horizontalMover.TickFixed(_horizontal, _moveSpeed);
+            _horizontalMover.TickFixed(_horizontal, _moveSpeed);
 
             if (_isJump)
             {
@@ -33,5 +51,3 @@ namespace Controller
         }
     }
 }
-
-
