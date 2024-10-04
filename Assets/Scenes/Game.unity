@@ -436,17 +436,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1609142828379731113, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 025cbf9d232c99f4bb5a2e86929f2cd7, type: 2}
     - target: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
       propertyPath: m_Name
       value: EnemySpawner1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945873673999013959, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
-      propertyPath: _moveSpeed
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8448626222475601864, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
       propertyPath: m_RootOrder

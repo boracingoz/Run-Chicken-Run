@@ -8,7 +8,7 @@ namespace Movements
     {
         EnemyController _enemyController;
         private float _moveSpeed;
-
+    
         public EnemyMovement(EnemyController enemyController)
         {
             _enemyController = enemyController;
