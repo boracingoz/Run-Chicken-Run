@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Abstracts.Inputs;
+using Controller;
 using Inputs;
+using Manager;
 using Movements;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,6 +21,7 @@ namespace Controllers
         IInputListener _input;
         float _horizontal;
         bool _isJump;
+        bool _isDead= false;
 
         private void Awake()
         {
@@ -29,13 +32,18 @@ namespace Controllers
 
         void Update()
         {
+            if (_isDead)
+            {
+                return;
+            }
+
             _horizontal = _input.Horizontal;
 
             if (_input.IsJump == true)
             {
                 _isJump = true;
 
-            }   
+            }
         }
 
         private void FixedUpdate()
@@ -48,6 +56,17 @@ namespace Controllers
                 _jump.FixedTick(_jumpForce);
             }
             _isJump = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            EnemyController enemyController = other.GetComponent<EnemyController>();
+
+            if (enemyController != null)
+            {
+                _isDead = true;
+                GameManager.Instance.StopGame();
+            }
         }
     }
 }
