@@ -19,7 +19,7 @@ namespace Controller
             _enemyMovement = new EnemyMovement(this);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             _currentLifeTime += Time.deltaTime;
 
