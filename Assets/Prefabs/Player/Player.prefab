@@ -48,10 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef923bf80f71fc41902fa088bd29423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horiDir: 0
-  _moveSpeed: 1
+  _moveSpeed: 5
   _jumpForce: 5
-  _isJump: 0
 --- !u!54 &7419416945465794285
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: a3683c9fd4398524b98c494dfc0a9ac5, type: 3}
   m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -109,7 +107,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: PlayerOnFoot
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &6241254865057365692
@@ -259,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 284dc75fbd3ceda4cb1057ae7a119e4f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 9a3906f1fcdb6134cb3e90f256b86d4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 284dc75fbd3ceda4cb1057ae7a119e4f, type: 3}
 --- !u!4 &4660353907020452499 stripped

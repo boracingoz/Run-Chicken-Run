@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &203140792 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 203140792, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-  m_PrefabInstance: {fileID: 1552680531}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,8 +292,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.47794095, y: -0.0005114903, z: 0.00028848348, w: -0.8783918}
-  m_LocalPosition: {x: -0.071817, y: 7.3197737, z: -4.05822}
+  m_LocalRotation: {x: 0.42440328, y: 0.0051057357, z: -0.0024779532, w: 0.9054555}
+  m_LocalPosition: {x: -0.08, y: 14.303108, z: -5.707555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -317,30 +306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 203140792, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: a3683c9fd4398524b98c494dfc0a9ac5, type: 3}
-    - target: {fileID: 203140792, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: PlayerOnFoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 222309821, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: _isJump
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 222309821, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: _jumpForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 222309821, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: _moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 222309821, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 203140792}
     - target: {fileID: 5126888935276696947, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -398,10 +363,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5625994806864387855, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 025cbf9d232c99f4bb5a2e86929f2cd7, type: 2}
     - target: {fileID: 5919676721050953019, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -446,17 +407,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5951167016503315544, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
+      propertyPath: _moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6175991368601853416, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
       propertyPath: m_Name
       value: Ground1
       objectReference: {fileID: 0}
-    - target: {fileID: 7066689931605922985, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7066689931605922985, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 290c9a8c1c0ef16438ebf0e038fce790, type: 3}
