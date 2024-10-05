@@ -16,6 +16,17 @@ namespace Manager
         {
             Time.timeScale = 0f;
         }
+
+        public void LoadScene()
+        {
+            Debug.Log("Oyun baþlýyor...");
+        }
+
+        public void ExitGame()
+        {
+            Debug.Log("oyundan çýkýlýyor!");
+            Application.Quit();
+        }
     }
 }
 
