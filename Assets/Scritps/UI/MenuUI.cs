@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace UI
 {
-    public class MenuUI : MonoBehaviour
+    public class MenuUI : MonoBehaviour 
     {
 
 
         public void StartBTN()
         {
-            GameManager.Instance.LoadScene();
+            GameManager.Instance.LoadScene("Game");
         }
 
         public void ExitBTN()
