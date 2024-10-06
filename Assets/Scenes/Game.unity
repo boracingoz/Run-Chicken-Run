@@ -457,7 +457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 163756135, guid: 34230d1f603bbc943836c18465b0dec9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 248444101, guid: 34230d1f603bbc943836c18465b0dec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -609,6 +609,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34230d1f603bbc943836c18465b0dec9, type: 3}
+--- !u!1 &2045938461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 598954897132361793, guid: 34230d1f603bbc943836c18465b0dec9, type: 3}
+  m_PrefabInstance: {fileID: 1724335651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2045938462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045938461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a38e01242979844d9fa801c00941b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameOverPanel: {fileID: 163756139}
 --- !u!224 &2045938465 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 598954897132361805, guid: 34230d1f603bbc943836c18465b0dec9, type: 3}

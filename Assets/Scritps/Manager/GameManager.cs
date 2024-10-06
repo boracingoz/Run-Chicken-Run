@@ -8,6 +8,8 @@ namespace Manager
 {
     public class GameManager : SingletonBehavior<GameManager>
     {
+        public event System.Action OnGameStop;
+
         private void Awake()
         {
             SingletonThisObject(this);
@@ -16,6 +18,8 @@ namespace Manager
         public void StopGame()
         {
             Time.timeScale = 0f;
+
+            OnGameStop?.Invoke();
         }
 
         public void LoadScene(string sceneName)
