@@ -1,4 +1,5 @@
-﻿using Movements;
+﻿using Manager;
+using Movements;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -30,14 +31,14 @@ namespace Controller
             }
         }
 
-
         private void FixedUpdate()
         {
             _enemyMovement.FixedTick();
         }
+
         private void KillYourSelef()
         {
-            Destroy(gameObject);
+            EnemyManager.Instance.SetPool(this);
         }
 
     }

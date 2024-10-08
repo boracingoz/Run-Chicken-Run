@@ -1,3 +1,4 @@
+using Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,6 @@ namespace Controller
 {
     public class SpawnerController : MonoBehaviour
     {
-        [SerializeField] GameObject _enemyPrefab;
         [Range(01f, 5f)][SerializeField] float _min = 0.1f;
         [Range(6f, 10f)][SerializeField] float _max = 10f;
 
@@ -30,7 +30,10 @@ namespace Controller
 
         private void Spawn()
         {
-            Instantiate(_enemyPrefab, transform.position, transform.rotation);
+            EnemyController newEnemy = EnemyManager.Instance.GetPool();
+            newEnemy.transform.parent = this.transform; 
+            newEnemy.transform.position = this.transform.position;
+            newEnemy.gameObject.SetActive(true);
 
             _currentSpawnTime = 0f;
             RandomSpawnTime();

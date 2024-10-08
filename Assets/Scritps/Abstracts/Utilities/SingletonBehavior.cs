@@ -10,7 +10,7 @@ namespace Abstracts.Utilities
         public static T Instance  { get; private set; }
 
         protected void SingletonThisObject(T entity)
-        {
+        {   
             if (Instance == null)
             {
                 Instance = entity;
