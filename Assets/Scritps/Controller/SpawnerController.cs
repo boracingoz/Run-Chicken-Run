@@ -1,3 +1,4 @@
+using Enums;
 using Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ namespace Controller
 
         float _maxSpawnTime;
         float _currentSpawnTime = 0f;
+        int _index= 0;
+        float _maxAddEnemyTime;
+
+        public bool CanIncrease => _index < EnemyManager.Instance.Count;
 
         private void OnEnable()
         {
@@ -26,12 +31,24 @@ namespace Controller
             {
                 Spawn();
             }
+
+            if (!CanIncrease)
+            {
+                return;
+            }
+
+            if (_maxAddEnemyTime < Time.time)
+            {
+                _maxAddEnemyTime = Time.time + EnemyManager.Instance.AddDelayTime;
+                IncreaseIndex();
+            }
         }
+
 
         private void Spawn()
         {
-            EnemyController newEnemy = EnemyManager.Instance.GetPool();
-            newEnemy.transform.parent = this.transform; 
+            EnemyController newEnemy = EnemyManager.Instance.GetPool((EnemyEnum) Random.Range(0,_index));
+            newEnemy.transform.parent = this.transform;
             newEnemy.transform.position = this.transform.position;
             newEnemy.gameObject.SetActive(true);
 
@@ -42,6 +59,13 @@ namespace Controller
         void RandomSpawnTime()
         {
             _maxSpawnTime = Random.Range(_min, _max);
+        }
+        private void IncreaseIndex()
+        {
+            if (CanIncrease)
+            {
+                _index++;
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 using Abstracts.Utilities;
 using Controller;
+using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +10,14 @@ namespace Manager
 {
     public class EnemyManager : SingletonBehavior<EnemyManager>
     {
-        [SerializeField] EnemyController _enemyPrefab;
+        [SerializeField] float _addDelayTime = 50f;
+        [SerializeField] EnemyController[] _enemyPrefabs;
 
-        Queue<EnemyController> _enemies = new Queue<EnemyController>(); 
+        Dictionary<EnemyEnum, Queue<EnemyController>>  _enemies = new Dictionary < EnemyEnum, Queue<EnemyController>>();
+
+        public float AddDelayTime => _addDelayTime;
+
+        public int Count => _enemyPrefabs.Length;
 
         private void Awake()
         {
@@ -25,30 +31,51 @@ namespace Manager
 
         private void InitializePool()
         {
-            for (int i = 0; i < 10; i++)
+            if (_enemyPrefabs.Length != Enum.GetValues(typeof(EnemyEnum)).Length)
             {
-               EnemyController newEnemy =  Instantiate(_enemyPrefab);
-               newEnemy.gameObject.SetActive(false);
-               newEnemy.transform.parent = this.transform;
-               _enemies.Enqueue(newEnemy);
+                Debug.LogError("EnemyPrefabs'lerin içerisinde dizi hatasý var!.");
+                return;
+            }
+
+            for (int i = 0; i < _enemyPrefabs.Length; i++)
+            {
+                Queue<EnemyController> enemyController = new Queue<EnemyController>();
+                for (int j = 0; j < 10; j++)
+                {
+                    EnemyController newEnemy = Instantiate(_enemyPrefabs[i]);
+                    newEnemy.gameObject.SetActive(false);
+                    newEnemy.transform.parent = this.transform;
+                    enemyController.Enqueue(newEnemy);
+                }
+
+                _enemies.Add((EnemyEnum)i, enemyController);
             }
         }
+
 
         public void SetPool(EnemyController enemyController)
         {
-            enemyController.gameObject.SetActive(false); //note
+            enemyController.gameObject.SetActive(false); 
             enemyController.transform.parent = this.transform;
-            _enemies.Enqueue(enemyController);
+
+            Queue<EnemyController> enemyControllers = _enemies[enemyController.EnemyType];
+            enemyControllers.Enqueue(enemyController);
         }
 
-        public EnemyController GetPool()
+        public EnemyController GetPool(EnemyEnum enemyType)
         {
-            if (_enemies.Count == 0)
+            Queue<EnemyController> enemyControllers = _enemies[enemyType];
+
+            if (enemyControllers.Count == 0)
             {
-                InitializePool();
+                for (int  i = 0; i < 2; i++)
+                {
+                    EnemyController newEnemy = Instantiate(_enemyPrefabs[(int)enemyType]);
+                    enemyControllers.Enqueue(newEnemy);
+                }
             }
 
-            return _enemies.Dequeue();  
+            return enemyControllers.Dequeue();
         }
     }
 }

@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 8
-  _lifeTime: 7.2
+  _lifeTime: 10
+  _enemyEnum: 0
 --- !u!65 &-5835074691138025591
 BoxCollider:
   m_ObjectHideFlags: 0

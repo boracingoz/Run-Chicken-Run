@@ -1,4 +1,5 @@
-﻿using Manager;
+﻿using Enums;
+using Manager;
 using Movements;
 using System;
 using System.Collections;
@@ -9,11 +10,16 @@ namespace Controller
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] float _moveSpeed;
-        EnemyMovement _enemyMovement;
         [SerializeField] float _lifeTime = 1f;
+        [SerializeField] EnemyEnum _enemyEnum;
+
 
         public float MoveSpeed => _moveSpeed;
+
+        EnemyMovement _enemyMovement;
         float _currentLifeTime = 0f;
+
+        public EnemyEnum EnemyType => _enemyEnum;
 
         private void Awake()
         {
