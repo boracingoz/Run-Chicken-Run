@@ -440,15 +440,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5126888935276696948, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126888935276696948, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5469401309473835049, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6241254865057365692, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baea40943ca128e4cb9fce50d5349905, type: 3}
@@ -927,12 +931,24 @@ PrefabInstance:
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
+    - target: {fileID: 1808032035716516363, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1132427131089590786, guid: e383e81c6a0942147a426d3ef88f2de1, type: 3}
+    - target: {fileID: 1808032035716516363, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 4251356071416787043, guid: dd182916e5518e14485c7dd9e47db6cc, type: 3}
     - target: {fileID: 2305048468347724784, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2305048468815928084, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305048469099936013, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2305048469099936013, guid: a140198b758fce948bbb212b08c0f113, type: 3}
@@ -955,6 +971,10 @@ PrefabInstance:
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
+    - target: {fileID: 4822360985248745626, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1132427131089590786, guid: 84c5c30a6e0f7be4d96f152fb2455814, type: 3}
     - target: {fileID: 4822360985921685436, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: _max
       value: 9.11
@@ -967,6 +987,18 @@ PrefabInstance:
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
+    - target: {fileID: 4822360985921685436, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _maxSpawnInterval
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822360985921685436, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _minSpawnInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822360985921685436, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1132427131089590786, guid: 789a2e7258fe14840a07539975ce132f, type: 3}
     - target: {fileID: 4822360986239772069, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: _max
       value: 10
@@ -979,6 +1011,22 @@ PrefabInstance:
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
+    - target: {fileID: 4822360986239772069, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _maxSpawnInterval
+      value: 4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822360986239772069, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _minSpawnInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822360986239772069, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 8448626222475601864, guid: 69610c458b45dad439fb7291b93c85eb, type: 3}
+    - target: {fileID: 4822360986239772069, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1132427131089590786, guid: 49364b1d7a6063043a150ed842400db9, type: 3}
     - target: {fileID: 4822360986393050968, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: _max
       value: 9.18
@@ -991,6 +1039,22 @@ PrefabInstance:
       propertyPath: _enemyPrefab
       value: 
       objectReference: {fileID: 3509609534116587424, guid: b8c6e88796e0a79449b7a5d4afaef3f4, type: 3}
+    - target: {fileID: 4822360986393050968, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822360986393050968, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 8448626222475601864, guid: 1a6f8b7474839c1409dd95621f5b6ac1, type: 3}
+    - target: {fileID: 4822360986393050968, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: _spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1132427131089590786, guid: e383e81c6a0942147a426d3ef88f2de1, type: 3}
+    - target: {fileID: 4901659208323995298, guid: a140198b758fce948bbb212b08c0f113, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4901659208323995299, guid: a140198b758fce948bbb212b08c0f113, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0

@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726dcf91c286bbe4faa6f2abbc7b1e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 8
+  _initialMoveSpeed: 7
+  _maxMoveSpeed: 20
+  _accelerationRate: 14.4
   _lifeTime: 10
   _enemyEnum: 0
 --- !u!65 &-5835074691138025591

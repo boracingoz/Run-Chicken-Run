@@ -1,65 +1,84 @@
+using UnityEngine;
 using Enums;
 using Manager;
-using System.Collections;
+using Controller;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Controller
 {
     public class SpawnerController : MonoBehaviour
     {
-        [Range(01f, 5f)][SerializeField] float _min = 0.1f;
-        [Range(6f, 10f)][SerializeField] float _max = 10f;
+        [Range(1f, 5f)][SerializeField] float _minSpawnInterval = 1f;
+        [Range(2f, 10f)][SerializeField] float _maxSpawnInterval = 3f;
+        [SerializeField] Transform[] _spawnPoints;
 
-
-        float _maxSpawnTime;
-        float _currentSpawnTime = 0f;
-        int _index= 0;
-        float _maxAddEnemyTime;
+        private float _nextSpawnTime;
+        private int _index = 0;
+        private float _maxAddEnemyTime;
+        private List<int> _availableSpawnPoints;
 
         public bool CanIncrease => _index < EnemyManager.Instance.Count;
 
-        private void OnEnable()
+        private void Start()
         {
-            RandomSpawnTime();
+            if (_spawnPoints.Length == 0)
+            {
+                Debug.LogError("No spawn points assigned to SpawnerController!");
+            }
+            _availableSpawnPoints = new List<int>();
+            for (int i = 0; i < _spawnPoints.Length; i++)
+            {
+                _availableSpawnPoints.Add(i);
+            }
+            SetNextSpawnTime();
         }
 
         private void Update()
         {
-            _currentSpawnTime += Time.deltaTime;    
-            if (_currentSpawnTime > _maxSpawnTime)
+            if (Time.time >= _nextSpawnTime)
             {
                 Spawn();
+                SetNextSpawnTime();
             }
 
-            if (!CanIncrease)
-            {
-                return;
-            }
+            if (!CanIncrease) return;
 
-            if (_maxAddEnemyTime < Time.time)
+            if (Time.time >= _maxAddEnemyTime)
             {
                 _maxAddEnemyTime = Time.time + EnemyManager.Instance.AddDelayTime;
                 IncreaseIndex();
             }
         }
 
-
         private void Spawn()
         {
-            EnemyController newEnemy = EnemyManager.Instance.GetPool((EnemyEnum) Random.Range(0,_index));
-            newEnemy.transform.parent = this.transform;
-            newEnemy.transform.position = this.transform.position;
+            if (_spawnPoints.Length == 0 || _availableSpawnPoints.Count == 0) return;
+
+            EnemyController newEnemy = EnemyManager.Instance.GetPool((EnemyEnum)Random.Range(0, _index));
+
+            int spawnPointIndex = _availableSpawnPoints[Random.Range(0, _availableSpawnPoints.Count)];
+            Transform spawnPoint = _spawnPoints[spawnPointIndex];
+
+            newEnemy.transform.position = spawnPoint.position;
+            newEnemy.transform.rotation = spawnPoint.rotation;
             newEnemy.gameObject.SetActive(true);
 
-            _currentSpawnTime = 0f;
-            RandomSpawnTime();
+            _availableSpawnPoints.Remove(spawnPointIndex);
+
+            if (_availableSpawnPoints.Count == 0)
+            {
+                for (int i = 0; i < _spawnPoints.Length; i++)
+                {
+                    _availableSpawnPoints.Add(i);
+                }
+            }
         }
 
-        void RandomSpawnTime()
+        private void SetNextSpawnTime()
         {
-            _maxSpawnTime = Random.Range(_min, _max);
+            _nextSpawnTime = Time.time + Random.Range(_minSpawnInterval, _maxSpawnInterval);
         }
+
         private void IncreaseIndex()
         {
             if (CanIncrease)
@@ -67,7 +86,5 @@ namespace Controller
                 _index++;
             }
         }
-
     }
-
 }

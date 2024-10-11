@@ -6,18 +6,16 @@ namespace Movements
 {
     public class EnemyMovement
     {
-        EnemyController _enemyController;
-        private float _moveSpeed;
-    
+        private EnemyController _enemyController;
+
         public EnemyMovement(EnemyController enemyController)
         {
             _enemyController = enemyController;
-            _moveSpeed = _enemyController.MoveSpeed;    
         }
 
-        public void FixedTick(float veritcal = 1)
+        public void FixedTick()
         {
-            _enemyController.transform.Translate(Vector3.back * veritcal * _moveSpeed * Time.deltaTime);
+            _enemyController.transform.Translate(Vector3.back * _enemyController.MoveSpeed * Time.deltaTime);
         }
     }
 }

@@ -65,18 +65,18 @@ namespace Manager
         public EnemyController GetPool(EnemyEnum enemyType)
         {
             Queue<EnemyController> enemyControllers = _enemies[enemyType];
-
             if (enemyControllers.Count == 0)
             {
-                for (int  i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     EnemyController newEnemy = Instantiate(_enemyPrefabs[(int)enemyType]);
+                    newEnemy.gameObject.SetActive(false);
                     enemyControllers.Enqueue(newEnemy);
                 }
             }
-
             return enemyControllers.Dequeue();
         }
+
     }
 }
 

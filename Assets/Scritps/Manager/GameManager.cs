@@ -1,4 +1,5 @@
 using Abstracts.Utilities;
+using Controller;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ namespace Manager
 {
     public class GameManager : SingletonBehavior<GameManager>
     {
-        public event System.Action OnGameStop;
+         public event System.Action OnGameStop;
+        public event System.Action OnGameReset;
 
         private void Awake()
         {
@@ -18,20 +20,27 @@ namespace Manager
         public void StopGame()
         {
             Time.timeScale = 0f;
-
             OnGameStop?.Invoke();
         }
 
+
         public void LoadScene(string sceneName)
         {
+            Time.timeScale = 1f;  
             StartCoroutine(LoadSceneAsync(sceneName));
         }
 
-        private IEnumerator LoadSceneAsync(string sceneName)
+        public IEnumerator LoadSceneAsync(string sceneName)
         {
-            Time.timeScale = 1f;
-            yield return SceneManager.LoadSceneAsync(sceneName);
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
+
+
+        public void ResetGame()
+        {
+            EnemyController.ResetStatics();
+        }
+
 
         public void ExitGame()
         {
