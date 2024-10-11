@@ -32,7 +32,9 @@ namespace Manager
 
         public IEnumerator LoadSceneAsync(string sceneName)
         {
+            SoundManager.Instance.StopSound(1);
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            SoundManager.Instance.PlaySound(2);
         }
 
 
