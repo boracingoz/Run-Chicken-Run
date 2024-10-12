@@ -15,7 +15,7 @@ namespace Movements
 
         public void FixedTick()
         {
-            _enemyController.transform.Translate(Vector3.back * _enemyController.MoveSpeed * Time.deltaTime);
+            _enemyController.transform.Translate(Vector3.back * _enemyController._currentMoveSpeed * Time.deltaTime);
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Movements
             Vector3 movement = Vector3.right * horizontal * Time.deltaTime * moveSpeed;
             Vector3 newPosition = _playerController.transform.position + movement;
 
-            // X pozisyonunu sýnýrlar içinde tutuyoruz
             newPosition.x = Mathf.Clamp(newPosition.x, MIN_X, MAX_X);
 
             _playerController.transform.position = newPosition;

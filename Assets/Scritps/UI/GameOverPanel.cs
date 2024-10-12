@@ -9,7 +9,14 @@ namespace UI
 
         public void YesBTN()
         {
-            GameManager.Instance.LoadScene("Game");
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.LoadScene("Game");
+            }
+            else
+            {
+                Debug.LogError("GameManager instance is null!");
+            }
         }
 
         public void NoBTN()

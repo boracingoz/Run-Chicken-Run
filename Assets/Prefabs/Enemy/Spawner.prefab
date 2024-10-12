@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b4fa52e56cf13458ab5c6611f5dae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSpawnInterval: 1.16
+  _minSpawnInterval: 3
   _maxSpawnInterval: 10
   _spawnPoints:
-  - {fileID: 8448626222475601864, guid: 1a6f8b7474839c1409dd95621f5b6ac1, type: 3}
+  - {fileID: 4850779407485229215, guid: 3cbe464f60686694c8d26589c1964bbc, type: 3}
+  - {fileID: 8652984736849035723, guid: 20c31c999b6950b4b98a5e0528a288d6, type: 3}
   - {fileID: 8448626222475601864, guid: 1a6f8b7474839c1409dd95621f5b6ac1, type: 3}
