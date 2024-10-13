@@ -15,6 +15,7 @@ namespace Controllers
     {
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _jumpForce = 300f;
+        [SerializeField] private Vector3 _startPosition;
 
         HoriMover _horizontalMover;
         Jump _jump;
@@ -25,14 +26,16 @@ namespace Controllers
 
         private void Awake()
         {
+            _startPosition = transform.position;
             _horizontalMover = new HoriMover(this);
             _jump = new Jump(this);
             _input = new InputListener(GetComponent<PlayerInput>());
         }
 
+
         void Update()
         {
-            if (_isDead)
+            if (_isDead || Time.timeScale == 0) 
             {
                 return;
             }
@@ -42,13 +45,19 @@ namespace Controllers
             if (_input.IsJump == true)
             {
                 _isJump = true;
-
             }
         }
 
         private void FixedUpdate()
         {
             _horizontalMover.TickFixed(_horizontal, _moveSpeed);
+            _horizontalMover.TickFixed(_horizontal, _moveSpeed);
+
+            if (_isDead || Time.timeScale == 0) 
+            {
+                return;
+            }
+
             _horizontalMover.TickFixed(_horizontal, _moveSpeed);
 
             if (_isJump)
@@ -58,6 +67,12 @@ namespace Controllers
             _isJump = false;
         }
 
+        private void OnEnable()
+        {
+            GameManager.Instance.OnGameReset += ResetPlayerPosition;
+        }
+
+
         private void OnTriggerEnter(Collider other)
         {
             EnemyController enemyController = other.GetComponent<EnemyController>();
@@ -65,8 +80,21 @@ namespace Controllers
             if (enemyController != null)
             {
                 _isDead = true;
-                GameManager.Instance.StopGame();
+                GameManager.Instance.StopGame(); 
+               
             }
         }
+
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameReset -= ResetPlayerPosition;
+        }
+
+        private void ResetPlayerPosition()
+        {
+            transform.position = _startPosition;  
+            
+        }
+
     }
 }

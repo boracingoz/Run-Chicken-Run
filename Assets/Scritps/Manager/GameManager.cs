@@ -21,6 +21,7 @@ namespace Manager
         public void StopGame()
         {
             Time.timeScale = 0f;
+
             OnGameStop?.Invoke();
         }
 
@@ -30,34 +31,11 @@ namespace Manager
             StartCoroutine(LoadSceneAsync(sceneName));
         }
 
-        private System.Collections.IEnumerator LoadSceneAsync(string sceneName)
+        private IEnumerator LoadSceneAsync(string sceneName)
         {
-            SoundManager.Instance.StopSound(1);
-            Debug.Log($"Loading scene: {sceneName}");
-
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            if (asyncLoad.isDone)
-            {
-                SoundManager.Instance.PlaySound(2);
-                Debug.Log($"Scene loaded: {sceneName}");
-            }
-            else
-            {
-                Debug.LogError($"Failed to load scene: {sceneName}");
-            }
+            yield return SceneManager.LoadSceneAsync(sceneName);
+            OnGameReset?.Invoke();  
         }
-
-        public void ResetGame()
-        {
-            OnGameReset?.Invoke();
-        }
-
 
         public void ExitGame()
         {
@@ -65,12 +43,6 @@ namespace Manager
             Application.Quit();
         }
 
-        private void OnDisable()
-        {
-            // Clean up events
-            OnGameStop = null;
-            OnGameReset = null;
-        }
     }
 }
 

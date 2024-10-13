@@ -14,6 +14,7 @@ namespace Controller
         [SerializeField] private float _accelerationRate = 0.1f;
         [SerializeField] private float _lifeTime = 10f;
         [SerializeField] private EnemyEnum _enemyEnum;
+        private Vector3 _startPosition;
 
         public float _currentMoveSpeed;
         private float _currentLifeTime;
@@ -23,11 +24,13 @@ namespace Controller
 
         private void Awake()
         {
+            _startPosition = transform.position;
             _enemyMovement = new EnemyMovement(this);
         }
 
         private void OnEnable()
         {
+            GameManager.Instance.OnGameReset += ResetEnemyPosition;
             _currentMoveSpeed = _initialMoveSpeed;
             _currentLifeTime = 0f;
         }
@@ -50,9 +53,20 @@ namespace Controller
             _enemyMovement.FixedTick();
         }
 
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameReset -= ResetEnemyPosition;
+        }
+
         private void KillYourself()
         {
             EnemyManager.Instance.ReturnToPool(this);
+        }
+
+        private void ResetEnemyPosition()
+        {
+            transform.position = _startPosition; 
+            gameObject.SetActive(true);  
         }
 
         private void Accelerate()

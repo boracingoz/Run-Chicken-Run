@@ -17,6 +17,7 @@ namespace UI
         private void OnEnable()
         {
             GameManager.Instance.OnGameStop += HandleOnGameStop;
+
         }
 
         private void OnDisable()

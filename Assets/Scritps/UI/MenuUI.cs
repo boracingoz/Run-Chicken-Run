@@ -8,7 +8,6 @@ namespace UI
     public class MenuUI : MonoBehaviour 
     {
 
-
         public void StartBTN()
         {
             GameManager.Instance.LoadScene("Game");
