@@ -13,6 +13,8 @@ namespace Manager
         public event Action OnGameStop;
         public event Action OnGameReset;
 
+        bool _isPaused = false;
+
         private void Awake()
         {
             SingletonThisObject(this);

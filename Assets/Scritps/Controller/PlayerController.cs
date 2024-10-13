@@ -16,6 +16,8 @@ namespace Controllers
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _jumpForce = 300f;
         [SerializeField] private Vector3 _startPosition;
+        [SerializeField] private AudioSource _characterSound;
+
 
         HoriMover _horizontalMover;
         Jump _jump;
@@ -24,27 +26,38 @@ namespace Controllers
         bool _isJump;
         bool _isDead= false;
 
+
         private void Awake()
         {
             _startPosition = transform.position;
             _horizontalMover = new HoriMover(this);
             _jump = new Jump(this);
             _input = new InputListener(GetComponent<PlayerInput>());
+
         }
 
 
         void Update()
         {
-            if (_isDead || Time.timeScale == 0) 
+            if (_isDead || Time.timeScale == 0)
             {
                 return;
             }
 
             _horizontal = _input.Horizontal;
 
-            if (_input.IsJump == true)
+            if (_input.IsJump)
             {
                 _isJump = true;
+
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlayJumpSound();  
+                }
+                else
+                {
+                    Debug.LogError("SoundManager instance is null!");
+                }
             }
         }
 
@@ -66,6 +79,7 @@ namespace Controllers
             }
             _isJump = false;
         }
+
 
         private void OnEnable()
         {
